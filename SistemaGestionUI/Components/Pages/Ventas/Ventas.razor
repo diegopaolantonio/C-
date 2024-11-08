@@ -1,0 +1,69 @@
+﻿@page "/ventas"
+@rendermode InteractiveServer
+@inject VentasService VentasService
+<h3>Ventas</h3>
+
+<div class="container">
+  <div class="row">
+      <a href="/ventas/new">
+        <button class="btn btn-success">
+          Nueva Venta
+        </button>
+      </a>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Usuario</th>
+          <th>Fecha</th>
+          <th>TotalVenta</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+        @foreach (Venta venta in ventas)
+        {
+          <tr>
+            <td>@venta.Id</td>
+            <td>@venta.Usuario</td>
+            <td>@venta.FechaVenta</td>
+            <td>@venta.TotalVenta</td>
+            <td>
+              <a href="/ventas/@venta.Id/Editar">Editar</a>
+            </td>
+            <td>
+              <button @onclick="@(() => EliminarVenta(venta.Id))" class="btn btn-danger">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+@code {
+
+
+
+    private List<Venta> ventas = new List<Venta>();
+
+    private string buscar = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ventas = await VentasService.GetVentas();
+    }
+
+    private async Task EliminarVenta(int id)
+    {
+        await VentasService.DeleteVenta(id);
+        ventas = await VentasService.GetVentas();
+    }
+
+}

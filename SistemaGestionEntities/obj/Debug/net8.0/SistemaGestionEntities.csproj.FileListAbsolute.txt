@@ -1,0 +1,13 @@
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\SistemaGestionEntities.deps.json
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\SistemaGestionEntities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\SistemaGestionEntities.pdb
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.csproj.AssemblyReference.cache
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.GeneratedMSBuildEditorConfig.editorconfig
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.AssemblyInfoInputs.cache
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.AssemblyInfo.cs
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.csproj.CoreCompileInputs.cache
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.sourcelink.json
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\refint\SistemaGestionEntities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\SistemaGestionEntities.pdb
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\ref\SistemaGestionEntities.dll

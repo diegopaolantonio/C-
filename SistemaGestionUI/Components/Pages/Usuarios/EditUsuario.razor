@@ -1,0 +1,29 @@
+﻿@page "/usuarios/{id:int}/editar"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@inject UsuariosService UsuariosService
+<h3>Editar Usuario</h3>
+
+@if (usuario == null)
+{
+  <p>Usuario no encontrado</p>
+}
+else
+{
+  <UsuarioForm Usuario="usuario" />
+}
+
+@code
+{
+  private Usuario? usuario;
+
+  [Parameter]
+  public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+  {
+    usuario = await UsuariosService.GetOneUsuario(Id);
+  }
+
+
+}

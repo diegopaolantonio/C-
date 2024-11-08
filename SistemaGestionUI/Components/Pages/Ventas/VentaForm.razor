@@ -1,0 +1,32 @@
+﻿@inject NavigationManager NavigationManager
+@inject VentasService VentasService
+
+<EditForm OnValidSubmit="SubmitVenta" FormName="venta-from">
+@*
+  <div class="form-group">
+    <label for="usuario-id">Usuario</label>
+    <InputText type="number" class="form-control" id="usuario-id" @bind-Value="venta.Usuario" />
+  </div >
+ *@
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</EditForm>
+
+@code {
+  [Parameter]
+
+    public Venta venta { get; set; } = null!;
+
+
+    protected override void OnInitialized()
+  {
+  }
+
+  private async Task SubmitVenta()
+  {
+      if (venta.Id == 0)
+        await VentasService.InsertVenta(venta);
+      else
+        await VentasService.UpdateVenta(venta.Id, venta);
+      NavigationManager.NavigateTo("/ventas");
+  }
+}

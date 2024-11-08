@@ -1,0 +1,12 @@
+﻿@page "/ventas/new"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<h3>Crear Venta</h3>
+
+<VentaForm Venta="venta" />
+
+@code
+{
+    private Venta venta = new();
+}

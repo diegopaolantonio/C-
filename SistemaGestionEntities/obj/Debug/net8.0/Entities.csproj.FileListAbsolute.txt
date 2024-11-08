@@ -1,0 +1,12 @@
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\Entities.deps.json
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\Entities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\bin\Debug\net8.0\Entities.pdb
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.AssemblyInfoInputs.cache
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.AssemblyInfo.cs
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.csproj.CoreCompileInputs.cache
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.sourcelink.json
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\refint\Entities.dll
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\Entities.pdb
+E:\CoderHouse\C#\ProyectoFinal\Entities\obj\Debug\net8.0\ref\Entities.dll

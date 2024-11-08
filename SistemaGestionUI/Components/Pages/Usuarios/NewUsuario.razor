@@ -1,0 +1,12 @@
+﻿@page "/usuarios/new"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<h3>Crear Usuario</h3>
+
+<UsuarioForm Usuario="usuario" />
+
+@code
+{
+  private Usuario usuario = new();
+}

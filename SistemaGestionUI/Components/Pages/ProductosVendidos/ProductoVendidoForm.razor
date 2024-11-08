@@ -1,0 +1,42 @@
+﻿@inject NavigationManager NavigationManager
+@inject ProductosVendidosService ProductosVendidosService
+
+<EditForm OnValidSubmit="SubmitProductoVendido" FormName="productos-vendidos-form">
+@* 
+  <div class="form-group">
+    <label for="usuario">Producto Vendido</label>
+    <InputText class="form-control" id="usuario" @bind-Value="productoVendido.Usuario.Id" />
+  </div
+
+  <div class="form-group">
+    <label for="producto">Producto Vendido</label>
+    <InputText class="form-control" id="producto" @bind-Value="productoVendido.Producto.Id" />
+  </div>
+
+  <div class="form-group">
+    <label for="cantidad">Producto Vendido</label>
+    <InputText type="number" class="form-control" id="cantidad" @bind-Value="productoVendido.Cantidad" />
+  </div>
+ *@
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</EditForm>
+
+
+@code {
+  [Parameter]
+
+    public ProductoVendido? productoVendido { get; set; } = null!;
+
+    protected override void OnInitialized()
+  {
+  }
+
+  private async Task SubmitProductoVendido()
+  {
+      if (productoVendido.Id == 0)
+        await ProductosVendidosService.InsertProductoVendido(productoVendido);
+      // else
+      //   await ProductosVendidosService.UpdateProductoVendido(productoVendido.Id, productoVendido);
+      NavigationManager.NavigateTo("/productosvendidos");
+  }
+}

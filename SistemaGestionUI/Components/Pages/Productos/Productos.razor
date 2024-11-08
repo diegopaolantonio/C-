@@ -1,0 +1,88 @@
+﻿@page "/productos"
+@inject ProductosService Service
+
+<h3>Productos</h3>
+<div class="container">
+    <div class="row">
+       <div class="col-6">
+            <div class="row">
+                <div class=col-6>
+                    <a href="/productos/new" class="btn btn-success">
+                        Nuevo Producto
+                    </a>
+                </div>
+                <div class=col-6>
+                    <button class="btn btn-primary" @onclick="ActualizarTotal">
+                        Actualizar Total
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                    <th>PrecioCompra</th>
+                    <th>PrecioVenta</th>
+                    <th>Stock</th>
+                    <th>TotalProducto</th>
+                    <th>Categoria</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Producto producto in productos)
+                {
+                    <tr>
+                        <td>@producto.Id</td>
+                        <td>@producto.Descripcion</td>
+                        <td>@producto.PrecioCompra</td>
+                        <td>@producto.PrecioVenta</td>
+                        <td>@producto.Stock</td>
+                        <td>@producto.TotalProducto</td>
+                        <td>@producto.Categoria</td>
+                        <td>
+                            <a href="/productos/@producto.Id/Editar">Editar</a>
+                        </td>
+                        <td>
+                            <button @onclick="@(() => EliminarProducto(producto.Id))" class="btn btn-danger">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+@code {
+    private List<Producto> productos = [];
+
+    private string filtro = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        productos = await Service.GetProductos();
+    }
+
+    public async Task EliminarProducto(int id)
+    {
+        await Service.DeleteProducto(id);
+        productos = await Service.GetProductos();
+    }
+
+    private async Task ActualizarTotal(MouseEventArgs e)
+    {
+        await Service.UpdateTotalProductos();
+        productos = await Service.GetProductos();
+    }
+}

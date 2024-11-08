@@ -1,0 +1,12 @@
+﻿@page "/productosvendidos/new"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<h3>Crear Venta</h3>
+
+<ProductoVendidoForm ProductosVendidos="ProductosVendidos" />
+
+@code
+{
+    private ProductosVendidos ProductosVendidos = new();
+}
