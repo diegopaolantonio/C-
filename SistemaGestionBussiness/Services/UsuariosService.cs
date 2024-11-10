@@ -1,4 +1,5 @@
-﻿using SistemaGestionData.DataAccess;
+﻿using System;
+using SistemaGestionData.DataAccess;
 using SistemaGestionEntities;
 
 namespace SistemaGestionBussiness.Services;
@@ -17,9 +18,9 @@ public class UsuariosService
         return await _usuariosDataAccess.GetUsuarios();
     }
 
-    public Usuario GetOneUsuario(int id)
+    public async Task<Usuario> GetOneUsuario(int id)
     {
-        return _usuariosDataAccess.GetOneUsuario(id);
+        return await _usuariosDataAccess.GetOneUsuario(id);
     }
 
     public async Task<Usuario> InsertUsuario(Usuario usuario)

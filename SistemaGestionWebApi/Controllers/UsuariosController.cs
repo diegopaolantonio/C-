@@ -31,7 +31,7 @@ namespace SistemaGestionWebApi.Controllers
         public async Task<ActionResult<Usuario>> GetUsuario([FromRoute(Name = "id")] int id)
         {
             _logger.LogInformation("Consultando por el producto con id {id}", id);
-            var usuario = _usuariosService.GetOneUsuario(id);
+            var usuario = await _usuariosService.GetOneUsuario(id);
             if (usuario is null)
             {
                 return NotFound();

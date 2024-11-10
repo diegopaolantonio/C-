@@ -16,7 +16,7 @@ public class ProductosVendidosDataAccess
 
     public async Task<List<ProductoVendido>> GetProductoVendido()
     {
-        return await _context.ProductoVendido.Include(p => p.Venta).Include(p => p.Producto).ToListAsync();
+        return await _context.ProductoVendido.Include(p => p.Venta).ThenInclude(p => p.Usuario).Include(p => p.Producto).ToListAsync();
     }
 
     public List<ProductoVendido> GetProductoVendidoBy(string filtro)

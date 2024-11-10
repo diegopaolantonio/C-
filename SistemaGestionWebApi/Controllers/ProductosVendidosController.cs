@@ -14,10 +14,20 @@ namespace SistemaGestionWebApi.Controllers
         private readonly UsuariosService _usuariosService;
         private readonly ProductosService _productosService;
 
-        public ProductosVendidosController(ILogger<ProductosVendidosController> logger, ProductosVendidosService productoVendidoService)
+        public ProductosVendidosController(
+            ILogger<ProductosVendidosController> logger,
+            ProductosVendidosService productoVendidoService,
+            VentasService ventasService,
+            UsuariosService usuariosService,
+            ProductosService productosService
+            )
         {
             _logger = logger;
             _productoVendidoService = productoVendidoService;
+            _ventasService = ventasService;
+            _usuariosService = usuariosService;
+            _productosService = productosService;
+
         }
 
         [HttpGet(Name = "Get ProductoVendido")]

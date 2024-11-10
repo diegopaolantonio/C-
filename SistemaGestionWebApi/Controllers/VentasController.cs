@@ -16,11 +16,20 @@ namespace SistemaGestionWebApi.Controllers
         private readonly ProductosService _productosService;
         private readonly ProductosVendidosService _productosVendidosService;
 
-        public VentasController(ILogger<VentasController> logger, VentasService ventasService)
+        public VentasController(
+            ILogger<VentasController> logger, 
+            VentasService ventasService,
+            UsuariosService usuariosService,
+            ProductosService productosService,
+            ProductosVendidosService productosVendidosService
+            )
         {
             _logger = logger;
             _ventasService = ventasService;
-        }
+            _usuariosService = usuariosService;
+            _productosService = productosService;
+            _productosVendidosService = productosVendidosService;
+    }
 
         [HttpGet(Name = "Get Venta")]
         public async Task<ActionResult<List<Venta>>> GetVentas()
@@ -48,20 +57,21 @@ namespace SistemaGestionWebApi.Controllers
             List<Producto> productos = new List<Producto>();
             decimal totalVenta = 0;
 
-            Console.WriteLine("Diego");
-
-            var usuario = _usuariosService.GetOneUsuario(IngresarVenta.UsuarioId);
+            var usuario = await _usuariosService.GetOneUsuario(IngresarVenta.UsuarioId);
 
             if (usuario is null) { 
                 return NotFound();
             }
 
-            Console.WriteLine("Diego");
-            Console.WriteLine(usuario.Id.ToString());
-            
+            if(IngresarVenta.ProductoId.Count != IngresarVenta.Cantidad.Count)
+            {
+                return BadRequest();
+            }
+
             foreach (var (productoId, cantidad) in IngresarVenta.ProductoId.Zip(IngresarVenta.Cantidad))
             {
                 var producto = await _productosService.GetOneProducto(productoId);
+                Console.WriteLine(producto.Descripcion);
                 productos.Add(producto);
                 totalVenta += producto.PrecioVenta * cantidad;
             }

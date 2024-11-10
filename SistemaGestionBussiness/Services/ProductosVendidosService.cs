@@ -1,4 +1,5 @@
-﻿using SistemaGestionData.DataAccess;
+﻿using System;
+using SistemaGestionData.DataAccess;
 using SistemaGestionEntities;
 
 namespace SistemaGestionBussiness.Services;

@@ -27,9 +27,9 @@ public class UsuariosDataAccess
             .ToListAsync();
     }
 
-    public Usuario GetOneUsuario(int id)
+    public async Task<Usuario> GetOneUsuario(int id)
     {
-        return _context.Usuarios.Find(id);
+        return await _context.Usuarios.FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<Usuario> InsertUsuario(Usuario usuario)
@@ -41,7 +41,7 @@ public class UsuariosDataAccess
 
     public async Task UpdateUsuario(int id, Usuario usuario)
     {
-        var usuarioToUpdate = GetOneUsuario(id);
+        var usuarioToUpdate = await GetOneUsuario(id);
         if (usuarioToUpdate != null)
         {
             usuarioToUpdate.Nombre = usuario.Nombre;
@@ -56,7 +56,7 @@ public class UsuariosDataAccess
 
     public async Task DeleteUsuario(int id)
     {
-        var usuarioToDelete = GetOneUsuario(id);
+        var usuarioToDelete = await GetOneUsuario(id);
         if (usuarioToDelete != null)
         {
             _context.Usuarios.Remove(usuarioToDelete);
