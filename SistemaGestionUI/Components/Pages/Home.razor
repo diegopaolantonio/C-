@@ -1,7 +1,104 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject LoginService Service
+@inject UsuariosService usuariosService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@if(usuarioLoggeado == null)
+{
+    <div class="input-group mb-3">
+        <div class="input-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" placeholder="email..." @bind="email" />
+        </div>
+        <div class="input-group mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="password..." @bind="password" />
+        </div>
+
+        <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LoginSubmit(email, password))">Aceptar</button>
+    </div>
+}
+else
+{
+    <h1>Hello, @usuarioLoggeado.NombreUsuario</h1>
+    <div class="input-group mb-3">
+        <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LogoutSubmit(usuarioLoggeado.Id))">Logout</button>
+    </div>
+}
+
+@code {
+
+    public string email = string.Empty;
+    public string password = string.Empty;
+    public List<Login> loginList = [];
+    Login? usuarioLoggeado = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        loginList = await Service.GetLogin();
+
+        if (loginList.Count > 1)
+        {
+            foreach(Login login in loginList)
+            {
+                await Service.DeleteLogin(login.Id);
+            }
+        }
+        if (loginList.Count == 1)
+        {
+            foreach (Login login in loginList)
+            {
+                usuarioLoggeado = login;
+            }
+        }
+    }
+
+    public async Task LogoutSubmit(int id)
+    {
+        Console.WriteLine(id.ToString());
+        await Service.DeleteLogin(id);
+        usuarioLoggeado = null;
+        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+    }
+
+    public async Task LoginSubmit(string email, string password)
+    {
+        List<Usuario> usuarios = await usuariosService.GetUsuarios();
+        Login loginActual = new Login();
+        List<Login> usuariosLoggeados = [];
+        foreach(var usuario in usuarios)
+        {
+            if (usuario.Email == email && usuario.Contraseña == password)
+            {
+                loginActual.UsuarioId = usuario.Id;
+                loginActual.Nombre = usuario.Nombre;
+                loginActual.Apellido = usuario.Apellido;
+                loginActual.NombreUsuario = usuario.NombreUsuario;
+                loginActual.Email = usuario.Email;
+                loginActual.FechaLogin = DateTime.Now;
+                await Service.InsertLogin(loginActual);
+
+                usuariosLoggeados = await Service.GetLoginBy(loginActual.Email);
+            }
+        }
+        foreach (var usuario in usuariosLoggeados)
+        {
+            usuarioLoggeado = usuario;
+            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        }
+        if(usuarioLoggeado == null)
+        {
+            Console.WriteLine("Usuario no encontrado");
+        }
+        else
+        {
+            
+        }
+    }
+}

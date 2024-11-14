@@ -17,6 +17,7 @@ public static class ConfigureServices
         services.AddScoped<UsuariosService>();
         services.AddScoped<VentasService>();
         services.AddScoped<ProductosVendidosService>();
+        services.AddScoped<LoginService>();
 
         return services;
     }

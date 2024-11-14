@@ -1,6 +1,8 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject LoginService Service
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">SistemaGestionUI</a>
+        <a class="navbar-brand" href="">Paolantonio</a>
     </div>
 </div>
 
@@ -14,26 +16,54 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="productos">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Productos
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="usuarios">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Usuarios
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="ventas">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Ventas
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="productovendido">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Producto Vendido
-            </NavLink>
-        </div>
+        @if (usuarioLoggeado != null)
+        {   
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/productos">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Productos
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/usuarios">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Usuarios
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/ventas">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Ventas
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/productosvendidos">
+                    <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Producto Vendido
+                </NavLink>
+            </div>
+        }
     </nav>
 </div>
 
+@code {
+
+    public List<Login> loginList = [];
+    Login? usuarioLoggeado = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        loginList = await Service.GetLogin();
+
+        if (loginList.Count > 1)
+        {
+            foreach(Login login in loginList)
+            {
+                await Service.DeleteLogin(login.Id);
+            }
+        }
+        if (loginList.Count == 1)
+        {
+            foreach (Login login in loginList)
+            {
+                usuarioLoggeado = login;
+            }
+        }
+    }
+}

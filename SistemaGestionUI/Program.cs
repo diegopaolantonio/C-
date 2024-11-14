@@ -11,9 +11,10 @@ builder.Services.AddTransient<ProductosService>();
 builder.Services.AddTransient<UsuariosService>();
 builder.Services.AddTransient<VentasService>();
 builder.Services.AddTransient<ProductosVendidosService>();
+builder.Services.AddTransient<LoginService>();
 
 builder.Services.AddHttpClient<ProductosService>(
-    client => client.BaseAddress = new Uri($"http://localhost:5252/api/productos/")
+    client => client.BaseAddress = new Uri($"{builder.Configuration["ApiUrl"]}/api/productos/")
     );
 
 builder.Services.AddHttpClient<UsuariosService>(
@@ -26,6 +27,10 @@ builder.Services.AddHttpClient<VentasService>(
 
 builder.Services.AddHttpClient<ProductosVendidosService>(
     client => client.BaseAddress = new Uri($"{builder.Configuration["ApiUrl"]}/api/productosvendidos/")
+    );
+
+builder.Services.AddHttpClient<LoginService>(
+    client => client.BaseAddress = new Uri($"{builder.Configuration["ApiUrl"]}/api/login/")
     );
 
 var app = builder.Build();

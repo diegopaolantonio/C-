@@ -14,6 +14,8 @@ public class ProyectoFinalContext : DbContext
 
     public DbSet<ProductoVendido> ProductoVendido { get; set; }
 
+    public DbSet<Login> Login { get; set; }
+
     public ProyectoFinalContext()
         : base() { }
 
@@ -27,7 +29,6 @@ public class ProyectoFinalContext : DbContext
             //var connectionString = _configuration.GetConnectionString("ProyectoFinalCS");
             optionsBuilder.UseSqlServer(
                 "Data Source=LAPTOP-HJU0A2KC;Initial Catalog=ProyectoFinalCS;Integrated Security=True;TrustServerCertificate=True"
-                //"Server=LAPTOP-HJU0A2KC;Database=ProyectoFinalCS;Integrated Security=True;Trusted_Connection=True;"
             );
         }
     }

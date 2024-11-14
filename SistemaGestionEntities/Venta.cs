@@ -17,7 +17,7 @@ public class Venta
     [Required(ErrorMessage = "Cantidad es requerido.")]
     public List<int> Cantidad { get; set; }
 
-    [Required(ErrorMessage = "Producto es requerido.")]
+    [Required(ErrorMessage = "FechaVenta es requerido.")]
     public DateTime FechaVenta { get; set; }
 
     [Required(ErrorMessage = "TotalVenta es requerido.")]

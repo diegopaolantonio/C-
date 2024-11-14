@@ -18,7 +18,8 @@
         <tr>
           <th>Id</th>
           <th>Venta</th>
-          <th>Producto</th>
+          <th>Producto.Id</th>
+          <th>Producto.Descripcion</th>
           <th>Cantidad</th>
           <th></th>
           <th></th>
@@ -29,8 +30,9 @@
         {
           <tr>
             <td>@productoVendido.Id</td>
-            <td>@productoVendido.Venta</td>
-            <td>@productoVendido.Producto</td>
+            <td>@productoVendido.Venta.Id</td>
+            <td>@productoVendido.Producto.Id</td>
+            <td>@productoVendido.Producto.Descripcion</td>
             <td>@productoVendido.Cantidad</td>
             <td>
               <a href="/ventas/@productoVendido.Id/Editar">Editar</a>
