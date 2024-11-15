@@ -37,20 +37,6 @@ public class VentasDataAccess
         return venta;
     }
 
-    public async Task UpdateVenta(int id, Venta venta)
-    {
-        var ventaToUpdate = await GetOneVenta(id);
-
-        if (ventaToUpdate != null)
-        {
-            ventaToUpdate.Usuario = venta.Usuario;
-            ventaToUpdate.FechaVenta = new DateTime();
-            ventaToUpdate.TotalVenta = venta.TotalVenta;
-            _context.Ventas.Update(ventaToUpdate);
-            await _context.SaveChangesAsync();
-        }
-    }
-
     public async Task DeleteVenta(int id)
     {
         var ventaToDelete = await GetOneVenta(id);

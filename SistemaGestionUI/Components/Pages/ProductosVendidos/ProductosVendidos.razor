@@ -4,14 +4,7 @@
 <h3>Producto Vendido</h3>
 
 <div class="container">
-  <div class="row">
-      <a class="btn btn-success" href="/productosvendidos/new">
-        @* <button class="btn btn-success"> *@
-          Nuevo Producto Vendido
-        @* </button> *@
-      </a>
-  </div>
-
+  
   <div class="row">
     <table class="table table-striped table-hover">
       <thead>
@@ -21,7 +14,6 @@
           <th>Producto.Id</th>
           <th>Producto.Descripcion</th>
           <th>Cantidad</th>
-          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -34,9 +26,6 @@
             <td>@productoVendido.Producto.Id</td>
             <td>@productoVendido.Producto.Descripcion</td>
             <td>@productoVendido.Cantidad</td>
-            <td>
-              <a href="/ventas/@productoVendido.Id/Editar">Editar</a>
-            </td>
             <td>
               <button @onclick="@(() => EliminarProductoVendido(productoVendido.Id))" class="btn btn-danger">
                 Eliminar

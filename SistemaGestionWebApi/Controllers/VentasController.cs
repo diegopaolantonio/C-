@@ -92,16 +92,12 @@ namespace SistemaGestionWebApi.Controllers
                 productoVendido.Cantidad = cantidad;
 
                 await _productosVendidosService.InsertProductoVendido(productoVendido);
+
+                producto.Stock = producto.Stock - productoVendido.Cantidad;
+                await _productosService.UpdateProducto(producto.Id, producto);
             }
 
             return CreatedAtAction(nameof(GetVenta), new { id = ventaCreado.Id }, ventaCreado);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult> ModificarVenta([FromRoute(Name = "id")] int id, [FromBody] Venta venta)
-        {
-            await _ventasService.UpdateVenta(id, venta);
-            return NoContent();
         }
 
         [HttpDelete("{id}")]

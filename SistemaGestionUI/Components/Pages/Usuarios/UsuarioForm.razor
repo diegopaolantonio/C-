@@ -3,6 +3,8 @@
 @inject UsuariosService UsuariosService
 
 <EditForm Model="Usuario" OnValidSubmit="SubmitUsuario" FormName="usuario-form">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
   <div class="form-group">
     <label for="nombre">Nombre</label>

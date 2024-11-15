@@ -28,11 +28,6 @@ public class VentasService
         await _httpClient.PostAsJsonAsync("", ingresarVenta);
     }
 
-    public async Task UpdateVenta(int id, Venta venta)
-    {
-        await _httpClient.PutAsJsonAsync($"{id}", venta);
-    }
-
     public async Task DeleteVenta(int id)
     {
         await _httpClient.DeleteAsync($"{id}");

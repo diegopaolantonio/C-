@@ -5,12 +5,12 @@
 @inject LoginService LoginService
 
 <EditForm Model="Venta" OnValidSubmit="SubmitVenta" FormName="venta-from">
-
+    
         @foreach (var productoCantidad in productosCantidad)
         {
             <div class="form-group">
                 <label for="cantidad">Ingresar cantidad de @productoCantidad.Producto.Descripcion - @productoCantidad.Producto.Categoria :</label>
-                <InputNumber @bind-Value="productoCantidad.Cantidad" class="form-control" />
+            <InputNumber @bind-Value="productoCantidad.Cantidad" class="form-control" Min="0" Max="@productoCantidad.Producto.Stock" / />
             </div>
         }
 
@@ -67,7 +67,7 @@
             Console.WriteLine(cantidad.ToString());
         }
         await VentasService.InsertVenta(ingresarVenta);
-        
-    }
 
+        NavigationManager.NavigateTo("/ventas");
+    }
 }

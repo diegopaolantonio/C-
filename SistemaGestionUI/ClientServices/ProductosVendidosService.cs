@@ -21,11 +21,6 @@ public class ProductosVendidosService
         return await _httpClient.GetFromJsonAsync<ProductoVendido>($"{id}");
     }
 
-    public async Task InsertProductoVendido(ProductoVendido productoVendido)
-    {
-        await _httpClient.PostAsJsonAsync("", productoVendido);
-    }
-
     public async Task DeleteProductoVendido(int id)
     {
         await _httpClient.DeleteAsync($"{id}");

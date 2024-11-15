@@ -501,27 +501,6 @@
   },
   {
     "ContainingType": "SistemaGestionWebApi.Controllers.VentasController",
-    "Method": "ModificarVenta",
-    "RelativePath": "api/Ventas/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "venta",
-        "Type": "SistemaGestionEntities.Venta",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SistemaGestionWebApi.Controllers.VentasController",
     "Method": "DeleteVenta",
     "RelativePath": "api/Ventas/{id}",
     "HttpMethod": "DELETE",

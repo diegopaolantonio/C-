@@ -52,6 +52,12 @@ namespace SistemaGestionWebApi.Controllers
         [HttpPost(Name = "Post ProductoVendido")]
         public async Task<ActionResult<ProductoVendido>> CrearProductoVendido([FromBody] ProductoVendido productoVendido)
         {
+            Producto producto = await _productosService.GetOneProducto(productoVendido.Producto.Id);
+            if (producto != null)
+            {
+                producto.Stock = producto.Stock - productoVendido.Cantidad;
+                await _productosService.UpdateProducto(producto.Id, producto);
+            }
             var productoVendidoCreado = await _productoVendidoService.InsertProductoVendido(productoVendido);
             return CreatedAtAction(nameof(GetOneProductoVendido), new { id = productoVendidoCreado.Id }, productoVendidoCreado);
         }

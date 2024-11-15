@@ -28,11 +28,6 @@ public class VentasService
         return await _ventasDataAccess.InsertVenta(venta);
     }
 
-    public async Task UpdateVenta(int id, Venta venta)
-    {
-        await _ventasDataAccess.UpdateVenta(id, venta);
-    }
-
     public async Task DeleteVenta(int id)
     {
         await _ventasDataAccess.DeleteVenta(id);

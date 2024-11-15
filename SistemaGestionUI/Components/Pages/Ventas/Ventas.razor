@@ -21,7 +21,6 @@
           <th>Fecha</th>
           <th>TotalVenta</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody >
@@ -32,9 +31,6 @@
             <td>@venta.Usuario.NombreUsuario</td>
             <td>@venta.FechaVenta</td>
             <td>@venta.TotalVenta</td>
-            <td>
-              <a href="/ventas/@venta.Id/Editar">Editar</a>
-            </td>
             <td>
               <button @onclick="@(() => EliminarVenta(venta.Id))" class="btn btn-danger">
                 Eliminar
