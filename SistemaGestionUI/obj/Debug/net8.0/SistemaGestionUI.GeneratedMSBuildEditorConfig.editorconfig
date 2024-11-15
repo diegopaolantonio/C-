@@ -78,10 +78,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc3Vhcmlvc1xVc3Vhcmlvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/CoderHouse/C\#/ProyectoFinal/SistemaGestionUI/Components/Pages/Ventas/EditVenta.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWZW50YXNcRWRpdFZlbnRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/CoderHouse/C\#/ProyectoFinal/SistemaGestionUI/Components/Pages/Ventas/NewVenta.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWZW50YXNcTmV3VmVudGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

@@ -23,9 +23,9 @@ public class VentasService
         return await _httpClient.GetFromJsonAsync<Venta>($"{id}");
     }
 
-    public async Task InsertVenta(Venta venta)
+    public async Task InsertVenta(IngresarVenta ingresarVenta)
     {
-        await _httpClient.PostAsJsonAsync("", venta);
+        await _httpClient.PostAsJsonAsync("", ingresarVenta);
     }
 
     public async Task UpdateVenta(int id, Venta venta)

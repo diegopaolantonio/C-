@@ -34,3 +34,9 @@ public class IngresarVenta
 
     public List<int> Cantidad { get; set; }
 }
+
+public class ProductoCantidad
+{
+    public Producto Producto { get; set; }
+    public int Cantidad { get; set; }
+}

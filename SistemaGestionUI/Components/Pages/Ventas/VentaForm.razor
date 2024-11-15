@@ -6,42 +6,28 @@
 
 <EditForm Model="Venta" OnValidSubmit="SubmitVenta" FormName="venta-from">
 
-   <row>
-        <div>
-            <p>Usuario</p>
-            <p>@ingresarVenta.UsuarioId</p>
-        </div >
-   </row>
+        @foreach (var productoCantidad in productosCantidad)
+        {
+            <div class="form-group">
+                <label for="cantidad">Ingresar cantidad de @productoCantidad.Producto.Descripcion - @productoCantidad.Producto.Categoria :</label>
+                <InputNumber @bind-Value="productoCantidad.Cantidad" class="form-control" />
+            </div>
+        }
 
-    @foreach (var (producto, cantidad) in productos.Zip(cantidades))
-    {
-        <row>
-            <p>@producto.Id</p>
-            <label for="cantidad">Cantidad @cantidad</label>
-            @* <InputNumber type="number" class="form-control" id="cantidad" @bind-Value="cantidades[i]" /> *@
-
-            <button @onclick="@(() => AgregarCarrito(producto.Id, cantidad))" class="btn btn-primary">
-                Agregar al carrito
-            </button>
-
-        </row>
-    }
-
-   <button type="submit" class="btn btn-primary">Guardar</button>
-
+       <button type="submit" class="btn btn-primary">Guardar</button>
+ 
 </EditForm>
 
 
 @code {
     [Parameter]
     public Venta Venta { get; set; }
-    
-    public IngresarVenta ingresarVenta { get; set; } = new IngresarVenta();
+    public IngresarVenta ingresarVenta = new IngresarVenta();
 
     public List<Producto> productos = [];
-    public List<int> cantidades = [];
     public List<Login> loginList = [];
     Login? usuarioLoggeado = null;
+    public List<ProductoCantidad> productosCantidad = new List<ProductoCantidad>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,45 +40,34 @@
 
         ingresarVenta.UsuarioId = usuarioLoggeado.UsuarioId;
         productos = await ProductosService.GetProductos();
-        foreach(var producto in productos)
-        {
-            cantidades.Add(0);
-        }
-
+        productosCantidad = productos.Select(p => new ProductoCantidad
+            {
+                Producto = p,
+                Cantidad = 0
+            }).ToList();
     }
 
     private async Task SubmitVenta()
     {
-
-        //Console.WriteLine("1");
-        for (int i = 0; i < productos.Count; i++)
+        List<int> productosVenta = [];
+        List<int> cantidadVenta = [];
+        foreach (var productoCantidad in productosCantidad)
         {
-            //Console.WriteLine("2");
-            //Console.WriteLine(cantidades[i].ToString());
-            if (cantidades[i] != 0 )
+            if(productoCantidad.Cantidad > 0)
             {
-                //Console.WriteLine("3");
-                Venta.Producto.Add(productos[i]);
-                Venta.Cantidad.Add(cantidades[i]); 
+                productosVenta.Add(productoCantidad.Producto.Id);
+                cantidadVenta.Add(productoCantidad.Cantidad);
             }
         }
+        ingresarVenta.ProductoId = productosVenta;
+        ingresarVenta.Cantidad = cantidadVenta;
 
-        //Console.WriteLine("4");
-        Venta.Usuario = await UsuariosService.GetOneUsuario(usuarioLoggeado.UsuarioId);
-
-        //Console.WriteLine("5");
-        await VentasService.InsertVenta(Venta);
-        //Console.WriteLine("6");
+        foreach (int cantidad in ingresarVenta.Cantidad)
+        {   
+            Console.WriteLine(cantidad.ToString());
+        }
+        await VentasService.InsertVenta(ingresarVenta);
+        
     }
 
-    private async Task AgregarCarrito(int i, int j)
-    {
-        Console.WriteLine("Diego");
-        Console.WriteLine(i.ToString());
-        //var producto = await ProductosService.GetOneProducto(i);
-        Console.WriteLine(j.ToString());
-        ingresarVenta.ProductoId.Add(i);
-        Console.WriteLine("Diego");
-        ingresarVenta.Cantidad.Add(j);
-        }
 }

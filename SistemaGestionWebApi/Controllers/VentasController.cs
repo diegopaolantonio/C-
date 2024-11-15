@@ -77,7 +77,7 @@ namespace SistemaGestionWebApi.Controllers
             }
 
             venta.TotalVenta = totalVenta;
-            venta.FechaVenta = new DateTime();
+            venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
             venta.Producto = productos;
             venta.Cantidad = IngresarVenta.Cantidad;
