@@ -56,11 +56,14 @@ public class UsuariosDataAccess
 
     public async Task DeleteUsuario(int id)
     {
-        var usuarioToDelete = await GetOneUsuario(id);
-        if (usuarioToDelete != null)
+        if(id != 1)
         {
-            _context.Usuarios.Remove(usuarioToDelete);
-            await _context.SaveChangesAsync();
+            var usuarioToDelete = await GetOneUsuario(id);
+            if (usuarioToDelete != null)
+            {
+                _context.Usuarios.Remove(usuarioToDelete);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaGestionData.Context;
 using SistemaGestionData.DataAccess;
+using SistemaGestionEntities;
 
 namespace SistemaGestionData;
 
@@ -14,18 +15,24 @@ public static class ConfigureServices
         IConfiguration configuration
         )
     {
-        services.AddDbContext<ProyectoFinalContext>(
-            optionBuilder =>
+        //private Usuario userAdmin = new Usuario();
+
+        services.AddDbContext<ProyectoFinalContext>((serviceProvider, options) =>
             {
-                //var connectionString = configuration.GetConnectionString("ProyectoFinalCS");
-                optionBuilder.UseSqlServer("Data Source=LAPTOP-HJU0A2KC;Initial Catalog=ProyectoFinalCS;Integrated Security=True;TrustServerCertificate=True");
+                var config = serviceProvider.GetRequiredService<IConfiguration>();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
             }
         );
+
+        services.AddSingleton<IConfiguration>(configuration);
+
         services.AddScoped<ProductosDataAccess>();
         services.AddScoped<UsuariosDataAccess>();
         services.AddScoped<VentasDataAccess>();
         services.AddScoped<ProductosVendidosDataAccess>();
         services.AddScoped<LoginDataAccess>();
+
         return services;
     }
 }

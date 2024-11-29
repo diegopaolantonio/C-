@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\CoderHouse\\C#\\ProyectoFinal\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{84B67FBC-1C85-4AFD-B0E5-3D9195D7EAB2}|SistemaGestionWebApi\\SistemaGestionWebApi.csproj|e:\\coderhouse\\c#\\proyectofinal\\sistemagestionwebapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84B67FBC-1C85-4AFD-B0E5-3D9195D7EAB2}|SistemaGestionWebApi\\SistemaGestionWebApi.csproj|solutionrelative:sistemagestionwebapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DB06401B-A5FF-41F5-9575-8231A7DAC545}|SistemaGestionUI\\SistemaGestionUI.csproj|e:\\coderhouse\\c#\\proyectofinal\\sistemagestionui\\components\\pages\\ventas\\ventaform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{DB06401B-A5FF-41F5-9575-8231A7DAC545}|SistemaGestionUI\\SistemaGestionUI.csproj|solutionrelative:sistemagestionui\\components\\pages\\ventas\\ventaform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionWebApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "SistemaGestionWebApi\\appsettings.Development.json",
+              "ToolTip": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionWebApi\\appsettings.Development.json",
+              "RelativeToolTip": "SistemaGestionWebApi\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-29T03:59:04.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ProductosVendidosController.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionWebApi\\Controllers\\ProductosVendidosController.cs",
               "RelativeDocumentMoniker": "SistemaGestionWebApi\\Controllers\\ProductosVendidosController.cs",
@@ -66,12 +83,11 @@
               "RelativeToolTip": "SistemaGestionWebApi\\Controllers\\ProductosVendidosController.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAgwDsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:23:41.306Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:23:41.306Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "VentasController.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionWebApi\\Controllers\\VentasController.cs",
               "RelativeDocumentMoniker": "SistemaGestionWebApi\\Controllers\\VentasController.cs",
@@ -79,12 +95,11 @@
               "RelativeToolTip": "SistemaGestionWebApi\\Controllers\\VentasController.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAkwFEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:10:10.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:10:10.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ProductosVendidosService.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionBussiness\\Services\\ProductosVendidosService.cs",
               "RelativeDocumentMoniker": "SistemaGestionBussiness\\Services\\ProductosVendidosService.cs",
@@ -92,12 +107,11 @@
               "RelativeToolTip": "SistemaGestionBussiness\\Services\\ProductosVendidosService.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAiwB4AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:01:35.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:01:35.41Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UsuarioForm.razor",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\Usuarios\\UsuarioForm.razor",
               "RelativeDocumentMoniker": "SistemaGestionUI\\Components\\Pages\\Usuarios\\UsuarioForm.razor",
@@ -105,12 +119,11 @@
               "RelativeToolTip": "SistemaGestionUI\\Components\\Pages\\Usuarios\\UsuarioForm.razor",
               "ViewState": "AgIAABUAAAAAAAAAAAAAADMAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T02:16:31.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:16:31.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Ventas.razor",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\Ventas\\Ventas.razor",
               "RelativeDocumentMoniker": "SistemaGestionUI\\Components\\Pages\\Ventas\\Ventas.razor",
@@ -118,25 +131,24 @@
               "RelativeToolTip": "SistemaGestionUI\\Components\\Pages\\Ventas\\Ventas.razor",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T02:06:07.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:06:07.403Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "VentaForm.razor",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\Ventas\\VentaForm.razor",
               "RelativeDocumentMoniker": "SistemaGestionUI\\Components\\Pages\\Ventas\\VentaForm.razor",
               "ToolTip": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\Ventas\\VentaForm.razor",
               "RelativeToolTip": "SistemaGestionUI\\Components\\Pages\\Ventas\\VentaForm.razor",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEYAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwEYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-15T02:16:07.435Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "VentasService.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\ClientServices\\VentasService.cs",
               "RelativeDocumentMoniker": "SistemaGestionUI\\ClientServices\\VentasService.cs",
@@ -144,12 +156,11 @@
               "RelativeToolTip": "SistemaGestionUI\\ClientServices\\VentasService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwBsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:16:01.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:16:01.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ProductosVendidosService.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\ClientServices\\ProductosVendidosService.cs",
               "RelativeDocumentMoniker": "SistemaGestionUI\\ClientServices\\ProductosVendidosService.cs",
@@ -157,12 +168,11 @@
               "RelativeToolTip": "SistemaGestionUI\\ClientServices\\ProductosVendidosService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:03:26.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:03:26.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ProductosVendidos.razor",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\ProductosVendidos\\ProductosVendidos.razor",
               "RelativeDocumentMoniker": "SistemaGestionUI\\Components\\Pages\\ProductosVendidos\\ProductosVendidos.razor",
@@ -170,12 +180,11 @@
               "RelativeToolTip": "SistemaGestionUI\\Components\\Pages\\ProductosVendidos\\ProductosVendidos.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T02:05:41.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:05:41.003Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ProductoVendido.cs",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionEntities\\ProductoVendido.cs",
               "RelativeDocumentMoniker": "SistemaGestionEntities\\ProductoVendido.cs",
@@ -183,12 +192,11 @@
               "RelativeToolTip": "SistemaGestionEntities\\ProductoVendido.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T02:34:21.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:34:21.126Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ProductosForm.razor",
               "DocumentMoniker": "E:\\CoderHouse\\C#\\ProyectoFinal\\SistemaGestionUI\\Components\\Pages\\Productos\\ProductosForm.razor",
               "RelativeDocumentMoniker": "SistemaGestionUI\\Components\\Pages\\Productos\\ProductosForm.razor",
@@ -196,8 +204,7 @@
               "RelativeToolTip": "SistemaGestionUI\\Components\\Pages\\Productos\\ProductosForm.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T02:16:38.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T02:16:38.557Z"
             }
           ]
         }

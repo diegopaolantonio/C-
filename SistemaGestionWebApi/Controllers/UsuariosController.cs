@@ -56,8 +56,15 @@ namespace SistemaGestionWebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUsuario([FromRoute(Name = "id")] int id)
         {
-            await _usuariosService.DeleteUsuario(id);
-            return NoContent();
+            if (id != 1)
+            {
+                await _usuariosService.DeleteUsuario(id);
+                return NoContent();
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
     }
 }

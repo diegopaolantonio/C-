@@ -1,11 +1,22 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using SistemaGestionEntities;
 
 namespace SistemaGestionData.Context;
 
 public class ProyectoFinalContext : DbContext
 {
+    private readonly IConfiguration _configuration;
+
+    public ProyectoFinalContext(DbContextOptions<ProyectoFinalContext> options, IConfiguration configuration)
+    : base(options)
+    {
+        _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+    }
+
     public DbSet<Producto> Productos { get; set; }
 
     public DbSet<Usuario> Usuarios { get; set; }
@@ -16,21 +27,22 @@ public class ProyectoFinalContext : DbContext
 
     public DbSet<Login> Login { get; set; }
 
-    public ProyectoFinalContext()
-        : base() { }
-
-    public ProyectoFinalContext(DbContextOptions<ProyectoFinalContext> options)
-        : base(options) { }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        if (!optionsBuilder.IsConfigured)
+        Usuario userAdmin = new Usuario
         {
-            //var connectionString = _configuration.GetConnectionString("ProyectoFinalCS");
-            optionsBuilder.UseSqlServer(
-                "Data Source=LAPTOP-HJU0A2KC;Initial Catalog=ProyectoFinalCS;Integrated Security=True;TrustServerCertificate=True"
-            );
-        }
-    }
+            Id = int.Parse(_configuration["Id"]),
+            Nombre = _configuration["Nombre"],
+            Apellido = _configuration["Apellido"],
+            NombreUsuario = _configuration["NombreUsuario"],
+            Email = _configuration["Email"],
+            Contraseña = _configuration["Contraseña"]
+        };
 
+        Console.WriteLine(userAdmin.Email);
+
+        modelBuilder.Entity<Usuario>().HasData(userAdmin);
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
