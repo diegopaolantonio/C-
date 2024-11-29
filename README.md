@@ -13,14 +13,14 @@ Entregar el proyecto funcionando con los Endpoint con los métodos especificados
 **Usuario:**
 : Al crear la entidad se genera una por defecto llamada *Admin* declarada en *appsettings.Development.json*
 
-|  | Tipo | Descripcion | Key |
-|---|---|---|---|
-| Id | int | Autogenerado | PK |
-| Nombre | string | Maximo de 50 caracteres | |
-| Apellido | string | Maximo de 50 caracteres | |
-| NombreUsuario | string | Maximo de 50 caracteres | |
-| Contraseña | string | Maximo 50 caracteres y minimo 5 caracteres | |
-| Email | string | Maximo de 100 caracteres | |
+|  | Tipo | Descripcion | Key | Usuario Admin |
+|---|---|---|---|---|
+| Id | int | Autogenerado | PK | 1 |
+| Nombre | string | Maximo de 50 caracteres | | Admin |
+| Apellido | string | Maximo de 50 caracteres | | Admin |
+| NombreUsuario | string | Maximo de 50 caracteres | | Admin |
+| Contraseña | string | Maximo 50 caracteres y minimo 5 caracteres | | CoderHouse |
+| Email | string | Maximo de 100 caracteres | | admin@coderhouse.com |
 
 **Producto:**
 
