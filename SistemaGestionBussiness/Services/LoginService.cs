@@ -33,8 +33,13 @@ public class LoginService
         await _loginDataAccess.DeleteLogin(id);
     }
 
-    public async Task<List<Login>> GetLoginBy(string filtro)
+    //public async Task<List<Login>> GetLoginByEmail(string token)
+    //{
+    //    return await _loginDataAccess.GetLoginByEmail(token);
+    //}
+
+    public async Task<List<Login>> GetLoginByToken(string token)
     {
-        return await _loginDataAccess.GetLoginBy(filtro);
+        return await _loginDataAccess.GetLoginByToken(token);
     }
 }

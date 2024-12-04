@@ -10,22 +10,28 @@ namespace SistemaGestionWebApi.Controllers
     {
         private readonly ILogger<LoginController> _logger;
         private readonly LoginService _loginService;
+        private readonly TokenService _tokenService;
 
-        public LoginController(ILogger<LoginController> logger, LoginService loginService)
+        public LoginController(ILogger<LoginController> logger, LoginService loginService, TokenService tokenService)
         {
             _logger = logger;
             _loginService = loginService;
+            _tokenService = tokenService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Login>>> GetLogin([FromQuery(Name = "filtro")] string? filtro)
+        public async Task<ActionResult<List<Login?>>> GetLogin([FromQuery(Name = "token")] string? token)
         {
-
-            if (filtro == null)
+            if (token == null)
             {
                 return await _loginService.GetLogin();
             }
-            return await _loginService.GetLoginBy(filtro);
+            if(_tokenService.ValidateToken(token, out var jwtToken))
+            {
+                return await _loginService.GetLoginByToken(token);
+            }
+            return null;
+            // return await _loginService.GetLoginByEmail(token);
         }
 
         [HttpGet("{id}")]
@@ -43,7 +49,10 @@ namespace SistemaGestionWebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Login>> CrearLogin([FromBody] Login login)
         {
+            login.token = _tokenService.GenerateToken(login.NombreUsuario, "Usuario");
+            
             var usuarioCreado = await _loginService.InsertLogin(login);
+            
             return CreatedAtAction(nameof(GetLogin), new { id = usuarioCreado.Id }, login);
         }
 

@@ -1,3 +1,5 @@
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using SistemaGestionUI.ClientServices;
 using SistemaGestionUI.Components;
 
@@ -12,6 +14,8 @@ builder.Services.AddTransient<UsuariosService>();
 builder.Services.AddTransient<VentasService>();
 builder.Services.AddTransient<ProductosVendidosService>();
 builder.Services.AddTransient<LoginService>();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddHttpClient<ProductosService>(
     client => client.BaseAddress = new Uri($"{builder.Configuration["ApiUrl"]}/api/productos/")
@@ -34,6 +38,8 @@ builder.Services.AddHttpClient<LoginService>(
     );
 
 var app = builder.Build();
+
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

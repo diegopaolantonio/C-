@@ -18,11 +18,20 @@ public class LoginDataAccess
         return await _context.Login.ToListAsync();
     }
 
-    public async Task<List<Login>> GetLoginBy(string filtro)
+    //public async Task<List<Login>> GetLoginByEmail(string token)
+    //{
+    //    return await _context
+    //        .Login.Where(u =>
+    //            u.Email.Contains(token)
+    //        )
+    //        .ToListAsync();
+    //}
+
+    public async Task<List<Login>> GetLoginByToken(string token)
     {
         return await _context
             .Login.Where(u =>
-                u.Email.Contains(filtro)
+                u.token.Contains(token)
             )
             .ToListAsync();
     }

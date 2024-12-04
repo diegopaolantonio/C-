@@ -26,5 +26,7 @@ public class Login
     [EmailAddress(ErrorMessage = "El Email no es una dirección de correo electrónico válida.")]
     public string Email { get; set; } = string.Empty;
 
+    public string token { get; set; } = string.Empty;
+
     public DateTime FechaLogin { get; set; }
 }

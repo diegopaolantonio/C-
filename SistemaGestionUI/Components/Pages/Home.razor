@@ -2,31 +2,35 @@
 @inject NavigationManager NavigationManager
 @inject LoginService Service
 @inject UsuariosService usuariosService
+@inject ILocalStorageService LocalStorage
 
 <PageTitle>Home</PageTitle>
 
-@if(usuarioLoggeado == null)
+@if(Message != null)
 {
-    <h1>Realizar login</h1>
-    <div class="input-group mb-3">
+    @if(usuarioLoggeado == null)
+    {
+        <h1>Realizar login</h1>
         <div class="input-group mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" placeholder="email..." @bind="email" />
-        </div>
-        <div class="input-group mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" placeholder="password..." @bind="password" />
-        </div>
+            <div class="input-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="email..." @bind="email" />
+            </div>
+            <div class="input-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="password..." @bind="password" />
+            </div>
 
-        <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LoginSubmit(email, password))">Aceptar</button>
-    </div>
-}
-else
-{
-    <h1>Hola, @usuarioLoggeado.NombreUsuario</h1>
-    <div class="input-group mb-3">
-        <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LogoutSubmit(usuarioLoggeado.Id))">Logout</button>
-    </div>
+            <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LoginSubmit(email, password))">Aceptar</button>
+        </div>
+    }
+    else
+    {
+        <h1>Hola, @usuarioLoggeado.NombreUsuario</h1>
+        <div class="input-group mb-3">
+            <button type="button" class="btn btn-outline-secondary" @onclick="@(() => LogoutSubmit(usuarioLoggeado.Id))">Logout</button>
+        </div>
+    }
 }
 
 @code {
@@ -35,32 +39,53 @@ else
     public string password = string.Empty;
     public List<Login> loginList = [];
     Login? usuarioLoggeado = null;
+    private string Token;
+    private string Message;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync() { }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        loginList = await Service.GetLogin();
+        if (firstRender)
+        {
+            Token = await Service.GetTokenAsync();
 
-        if (loginList.Count > 1)
-        {
-            foreach(Login login in loginList)
+            Message = string.IsNullOrEmpty(Token)
+                ? "No se encontró ningún token."
+                : "Token encontrado";
+
+            if (Token != null && Token != string.Empty)
             {
-                await Service.DeleteLogin(login.Id);
+                loginList = await Service.GetLoginBy(Token);
+
+                if (loginList.Count != 0)
+                {
+                    foreach (Login login in loginList)
+                    {
+                        usuarioLoggeado = login;
+                    }
+                }
+                if (usuarioLoggeado != null)
+                {
+                    Console.WriteLine(usuarioLoggeado.Email);
+                }
+                else
+                {
+                    await LocalStorage.RemoveItemAsync("authToken");
+                }
             }
-        }
-        if (loginList.Count == 1)
-        {
-            foreach (Login login in loginList)
-            {
-                usuarioLoggeado = login;
-            }
+
+            StateHasChanged();
         }
     }
 
     public async Task LogoutSubmit(int id)
     {
-        Console.WriteLine(id.ToString());
         await Service.DeleteLogin(id);
         usuarioLoggeado = null;
+
+        await LocalStorage.RemoveItemAsync("authToken");
+
         NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
     }
 
@@ -79,23 +104,22 @@ else
                 loginActual.NombreUsuario = usuario.NombreUsuario;
                 loginActual.Email = usuario.Email;
                 loginActual.FechaLogin = DateTime.Now;
-                await Service.InsertLogin(loginActual);
+                var token = await Service.InsertLogin(loginActual);
 
-                usuariosLoggeados = await Service.GetLoginBy(loginActual.Email);
+                usuariosLoggeados = await Service.GetLoginBy(token);
             }
         }
         foreach (var usuario in usuariosLoggeados)
         {
             usuarioLoggeado = usuario;
+
+            await LocalStorage.SetItemAsStringAsync("authToken", usuarioLoggeado.token);
+
             NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
         }
         if(usuarioLoggeado == null)
         {
             Console.WriteLine("Usuario no encontrado");
-        }
-        else
-        {
-            
         }
     }
 }
